@@ -1,0 +1,43 @@
+$avatar-width: 60vw;
+$avatar-height: 40vh;
+
+$screen-height: 100vh;
+
+body {
+  margin: 0;
+}
+
+.height-full {
+  display: flex;
+  min-height: $screen-height;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #bbbbbb;
+}
+
+.avatar-frame {
+  position: relative;
+  height: Min($avatar-width, $avatar-height);
+  width: Min($avatar-width, $avatar-height);
+}
+
+.avatar {
+  padding: 1%;
+  border-style: solid;
+  border-radius: 50%;
+  object-fit: fill;
+  border-color: #666666;
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.subtitle{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #303030;
+}
