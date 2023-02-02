@@ -1,7 +1,11 @@
-$avatar-width: 60vw;
-$avatar-height: 40vh;
-
 $screen-height: 100vh;
+
+$small-device-breakpoint: 480px;
+
+@mixin avatar-frame-def($max-avatar-width, $max-avatar-height) {
+  height: Min($max-avatar-width, $max-avatar-height);
+  width: Min($max-avatar-width, $max-avatar-height);
+}
 
 body {
   margin: 0;
@@ -18,8 +22,7 @@ body {
 
 .avatar-frame {
   position: relative;
-  height: Min($avatar-width, $avatar-height);
-  width: Min($avatar-width, $avatar-height);
+  @include avatar-frame-def(30vw, 30vh);
 }
 
 .avatar {
@@ -37,8 +40,8 @@ body {
 }
 
 .subtitle {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
   color: #303030;
@@ -69,5 +72,11 @@ body {
   }
   :active {
     color: #303030;
+  }
+}
+
+@media (max-width: $small-device-breakpoint) {
+  .avatar-frame {
+    @include avatar-frame-def(60vw, 40vh);
   }
 }
