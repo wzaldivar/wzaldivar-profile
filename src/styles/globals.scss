@@ -1,6 +1,7 @@
 $screen-height: 100vh;
 
 $small-device-breakpoint: 480px;
+$medium-device-breakpoint: 768px;
 
 @mixin avatar-frame-def($max-avatar-width, $max-avatar-height) {
   height: Min($max-avatar-width, $max-avatar-height);
@@ -78,5 +79,11 @@ body {
 @media (max-width: $small-device-breakpoint) {
   .avatar-frame {
     @include avatar-frame-def(60vw, 40vh);
+  }
+}
+
+@media (max-height: $small-device-breakpoint) {
+  .avatar-frame {
+    @include avatar-frame-def(40vw, 40vh);
   }
 }
