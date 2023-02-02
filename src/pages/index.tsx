@@ -1,15 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.scss";
-import Link from "next/link";
-import {
-  RiWhatsappFill,
-  RiLinkedinBoxFill,
-  RiGithubFill,
-} from "react-icons/ri";
-import { MdEmail } from "react-icons/md";
-import profileImage from "../../public/profile_picture.jpeg";
+import AvatarSection from "@/components/avatar-section";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,47 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="height-full">
-        <div className="avatar-frame">
-          <Image
-            priority
-            className="avatar"
-            fill
-            alt="Profile Picture"
-            src={profileImage}
-          ></Image>
-        </div>
-        <div className="title">Walber Zaldivar</div>
-        <div className="subtitle">Software Developer</div>
-        <div className="social-link-bar">
-          <div className="social-link-frame">
-            <Link
-              className="social-link"
-              href="https://linkedin.com/in/walber-zaldivar-herrera"
-            >
-              <RiLinkedinBoxFill />
-            </Link>
-          </div>
-          <div className="social-link-frame">
-            <Link className="social-link" href="https://github.com/wzaldivar">
-              <RiGithubFill />
-            </Link>
-          </div>
-          <div className="social-link-frame">
-            <Link
-              className="social-link"
-              href="mailto:walber.zaldivar@gmail.com"
-            >
-              <MdEmail />
-            </Link>
-          </div>
-          <div className="social-link-frame">
-            <Link className="social-link" href="https://wa.me/59895059121">
-              <RiWhatsappFill />
-            </Link>
-          </div>
-        </div>
-      </div>
+      <AvatarSection />
     </>
   );
 }
