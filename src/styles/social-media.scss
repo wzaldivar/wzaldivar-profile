@@ -1,0 +1,30 @@
+$social-media-color: #303030;
+$social-media-color-hover: #666666;
+
+.social-link-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.social-link-frame {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-link {
+  font-size: 2rem;
+  color: $social-media-color;
+  :visited {
+    color: $social-media-color;
+  }
+  :hover {
+    font-size: 2.5rem;
+    color: $social-media-color-hover;
+  }
+  :active {
+    color: $social-media-color;
+  }
+}

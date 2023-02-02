@@ -1,0 +1,35 @@
+@import "common";
+
+$avatar-background-color: #bbbbbb;
+$small-device-breakpoint: 480px;
+
+@mixin avatar-frame-def($max-avatar-width, $max-avatar-height) {
+  height: min($max-avatar-width, $max-avatar-height);
+  width: min($max-avatar-width, $max-avatar-height);
+}
+
+.section-avatar {
+  background-color: $avatar-background-color;
+}
+
+.avatar-frame {
+  position: relative;
+  @include avatar-frame-def(30vw, 30vh);
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+@media (max-width: $small-device-breakpoint) {
+  .avatar-frame {
+    @include avatar-frame-def(60vw, 40vh);
+  }
+}
+
+@media (max-height: $small-device-breakpoint) {
+  .avatar-frame {
+    @include avatar-frame-def(40vw, 40vh);
+  }
+}
