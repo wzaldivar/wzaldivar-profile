@@ -9,6 +9,7 @@ import {
   RiGithubFill,
 } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
+import profileImage from "../../public/profile_picture.jpeg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,24 +28,40 @@ export default function Home() {
             priority
             className="avatar"
             fill
-            alt="me"
-            src="/profile_picture.jpeg"
+            alt="Profile Picture"
+            src={profileImage}
           ></Image>
         </div>
         <div className="title">Walber Zaldivar</div>
         <div className="subtitle">Software Developer</div>
-        <Link className="title" href="https://wa.me/59895059121">
-          <RiWhatsappFill />
-        </Link>
-        <Link href="https://linkedin.com/in/walber-zaldivar-herrera">
-          <RiLinkedinBoxFill />
-        </Link>
-        <Link href="mailto:walber.zaldivar@gmail.com">
-          <MdEmail />
-        </Link>
-        <Link href="mailto:walber.zaldivar@gmail.com">
-          <RiGithubFill />
-        </Link>
+        <div className="social-link-bar">
+          <div className="social-link-frame">
+            <Link
+              className="social-link"
+              href="https://linkedin.com/in/walber-zaldivar-herrera"
+            >
+              <RiLinkedinBoxFill />
+            </Link>
+          </div>
+          <div className="social-link-frame">
+            <Link className="social-link" href="https://github.com/wzaldivar">
+              <RiGithubFill />
+            </Link>
+          </div>
+          <div className="social-link-frame">
+            <Link
+              className="social-link"
+              href="mailto:walber.zaldivar@gmail.com"
+            >
+              <MdEmail />
+            </Link>
+          </div>
+          <div className="social-link-frame">
+            <Link className="social-link" href="https://wa.me/59895059121">
+              <RiWhatsappFill />
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
