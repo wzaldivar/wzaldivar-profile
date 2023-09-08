@@ -1,0 +1,19 @@
+$footer-background-color: #bbbbbb;
+$copyright-color: black;
+
+.section-footer {
+  height: 30vh;
+  background-color: $footer-background-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: $copyright-color;
+  }

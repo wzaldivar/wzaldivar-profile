@@ -1,6 +1,7 @@
 import Image from "next/image";
 import profileImage from "../../public/profile_picture.jpeg";
 import SocialMediaBar from "./social-media-bar";
+import ScrollButton from "./scroll-button";
 
 export default function AvatarSection() {
   return (
@@ -17,6 +18,7 @@ export default function AvatarSection() {
       <div className="title">Walber Zaldivar</div>
       <div className="subtitle">Software Developer</div>
       <SocialMediaBar />
+      <ScrollButton sectionId="foo" />
     </div>
   );
 }
