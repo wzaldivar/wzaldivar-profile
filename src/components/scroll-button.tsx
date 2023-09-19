@@ -1,25 +1,39 @@
-import { useEffect, useState } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { FaChevronDown as DownArrowIcon } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 interface ScrollButtonProps {
   sectionId: string;
+  icon?: IconType;
 }
 
-export default function ScrollButton(props: ScrollButtonProps) {
+const ScrollButton: FunctionComponent<ScrollButtonProps> = (props) => {
+  const { sectionId, icon: Icon = DownArrowIcon } = props;
+
+  const nextSectionRef = useRef<HTMLElement | null>(null);
+
   const [showButton, setShowButton] = useState(true);
   const [fadeIn, setFadeIn] = useState(true);
 
+  useEffect(() => {
+    nextSectionRef.current = document.getElementById(sectionId);
+  }, [sectionId]);
+
   const handleScrollToSection = () => {
-    const nextSection = document.getElementById(props.sectionId);
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
+    if (nextSectionRef.current) {
+      nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const handleScroll = () => {
-    const nextSection = document.getElementById(props.sectionId);
-    if (nextSection) {
-      const nextSectionTop = nextSection.getBoundingClientRect().top;
+    if (nextSectionRef.current) {
+      const nextSectionTop = nextSectionRef.current.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
       const addButton = nextSectionTop > windowHeight * 0.95;
       setFadeIn(addButton);
@@ -35,7 +49,7 @@ export default function ScrollButton(props: ScrollButtonProps) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [props.sectionId]);
+  });
 
   const handleFadeOutEnd = () => {
     setShowButton(false);
@@ -43,11 +57,16 @@ export default function ScrollButton(props: ScrollButtonProps) {
 
   useEffect(() => {
     const iconContainer = document.querySelector(".icon-container.fade-out");
-    if (iconContainer) {
-      iconContainer?.addEventListener("animationend", handleFadeOutEnd);
-    }
+    iconContainer?.addEventListener(
+      "animationend",
+      handleFadeOutEnd as EventListener,
+    );
+
     return () => {
-      iconContainer?.removeEventListener("animationend", handleFadeOutEnd);
+      iconContainer?.removeEventListener(
+        "animationend",
+        handleFadeOutEnd as EventListener,
+      );
     };
   }, [fadeIn]);
 
@@ -58,9 +77,11 @@ export default function ScrollButton(props: ScrollButtonProps) {
         onClick={handleScrollToSection}
       >
         <div className="icon-bouncer">
-          <DownArrowIcon />
+          <Icon />
         </div>
       </div>
     )
   );
-}
+};
+
+export default ScrollButton;

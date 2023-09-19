@@ -2,8 +2,9 @@ import Image from "next/image";
 import profileImage from "../../public/profile_picture.jpeg";
 import SocialMediaBar from "./social-media-bar";
 import ScrollButton from "./scroll-button";
+import { FunctionComponent } from "react";
 
-export default function AvatarSection() {
+const AvatarSection: FunctionComponent = () => {
   return (
     <div className="height-full section-avatar">
       <div className="avatar-frame">
@@ -11,14 +12,18 @@ export default function AvatarSection() {
           priority
           className="avatar"
           fill
-          alt="Profile Picture"
+          alt="Profile Picture of Walber Zaldivar"
           src={profileImage}
         ></Image>
       </div>
+      {/*Name and Title*/}
       <div className="title">Walber Zaldivar</div>
       <div className="subtitle">Software Developer</div>
+
       <SocialMediaBar />
       <ScrollButton sectionId="foo" />
     </div>
   );
-}
+};
+
+export default AvatarSection;
