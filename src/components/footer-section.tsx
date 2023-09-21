@@ -1,14 +1,15 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 import SocialMediaBar from "@/components/social-media-bar";
 
 const FooterSection: FunctionComponent = () => {
-  const currentYear = new Date().getFullYear();
+  const copyrightLabel = () =>
+    `Walber Zaldivar © ${new Date().getMilliseconds()}`;
 
   return (
     <div className="section-footer">
       <SocialMediaBar />
-      <div className="copyright">WALBER ZALDIVAR © {currentYear}</div>
+      <div className="copyright-label">{copyrightLabel()}</div>
     </div>
   );
 };

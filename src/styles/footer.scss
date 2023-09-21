@@ -10,10 +10,11 @@ $copyright-color: black;
   align-items: center;
 }
 
-.copyright {
-  margin-top: 0.5rem;
+.copyright-label {
+  margin-top: 0.8rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
   font-weight: 800;
+  text-transform: uppercase;
   color: $copyright-color;
 }

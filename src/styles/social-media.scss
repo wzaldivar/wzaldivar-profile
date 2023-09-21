@@ -1,33 +1,45 @@
 $social-media-color: #303030;
 $social-media-color-hover: #666666;
 
+$social-link-frame-size: 3.5rem;
+$social-link-font-size-default: 2.5rem;
+$social-link-font-size-hover: 3rem;
+
 .social-link-bar {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 80vw;
+
+  @media (max-width: 6.5 * $social-link-frame-size) {
+    max-width: 3 * $social-link-frame-size;
+  }
 }
 
 .social-link-frame {
   display: flex;
-  width: 3rem;
-  height: 3rem;
+  width: $social-link-frame-size;
+  height: $social-link-frame-size;
   justify-content: center;
   align-items: center;
 }
 
 .social-link {
-  font-size: 2rem;
+  font-size: $social-link-font-size-default;
   color: $social-media-color;
 
-  :visited {
+  &:visited {
     color: $social-media-color;
   }
 
-  :hover {
-    font-size: 2.5rem;
+  &:hover {
+    font-size: $social-link-font-size-hover;
     color: $social-media-color-hover;
   }
 
-  :active {
+  &:active {
     color: $social-media-color;
   }
 }
