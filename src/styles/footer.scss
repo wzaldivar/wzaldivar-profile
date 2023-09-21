@@ -1,5 +1,7 @@
-$footer-background-color: #bbbbbb;
-$copyright-color: black;
+@import "common";
+@import "avatar";
+
+$footer-background-color: $avatar-background-color;
 
 .section-footer {
   height: 30vh;
@@ -13,8 +15,8 @@ $copyright-color: black;
 .copyright-label {
   margin-top: 0.8rem;
   margin-bottom: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: 1rem;
+  font-weight: 600;
   text-transform: uppercase;
-  color: $copyright-color;
+  color: $subtitle-color;
 }

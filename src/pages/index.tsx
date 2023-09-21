@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import AvatarSection from "@/components/avatar-section";
 import FooSection from "@/components/foo-section";
-import FooterSection from "@/components/footer-section";
+import FooterSection from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

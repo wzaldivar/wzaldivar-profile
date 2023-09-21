@@ -7,13 +7,13 @@ import { IconType } from "react-icons";
 export interface SocialMediaButtonProps {
   href: string;
   icon: IconType;
-  "aria-label"?: string | undefined;
+  ariaLabel?: string | undefined;
 }
 
-const SocialMediaButton: FunctionComponent<SocialMediaButtonProps> = (
+export const SocialMediaButton: FunctionComponent<SocialMediaButtonProps> = (
   props,
 ) => {
-  const { href, icon: SocialMediaIcon, "aria-label": ariaLabel } = props;
+  const { href, icon: SocialMediaIcon, ariaLabel } = props;
 
   return (
     <div className="social-link-frame">
@@ -28,5 +28,3 @@ const SocialMediaButton: FunctionComponent<SocialMediaButtonProps> = (
     </div>
   );
 };
-
-export default SocialMediaButton;

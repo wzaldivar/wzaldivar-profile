@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import Image from "next/image";
 
 import ScrollButton from "@/components/scroll-button";
-import SocialMediaBar from "@/components/social-media-bar";
+import SocialMediaBar from "@/components/social-media";
 
 import profileImage from "../../public/profile_picture.jpeg";
 

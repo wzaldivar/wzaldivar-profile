@@ -6,35 +6,35 @@ import {
   RiWhatsappFill as WhatsappIcon,
 } from "react-icons/ri";
 
-import { SocialMediaButtonProps } from "@/components/social-media-button";
+import { SocialMediaButtonProps } from "@/components/social-media/social-media-button";
 
 export const socialMediaBarLabel = "Contact Walber Zaldivar";
 
-export const socialMediaButtonProps: SocialMediaButtonProps[] = [
+export const socialMediaProps: SocialMediaButtonProps[] = [
   {
     href: "https://linkedin.com/in/walber-zaldivar-herrera",
     icon: LinkedinIcon,
-    "aria-label": "Go to LinkedIn profile",
+    ariaLabel: "Go to LinkedIn profile",
   },
   {
     href: "https://github.com/wzaldivar",
     icon: GithubIcon,
-    "aria-label": "Go to GitHub profile",
+    ariaLabel: "Go to GitHub profile",
   },
   {
     href: "mailto:walber.zaldivar@gmail.com",
     icon: EmailIcon,
-    "aria-label": "Send email",
+    ariaLabel: "Send email",
   },
   {
     href: "https://wa.me/59895059121",
     icon: WhatsappIcon,
-    "aria-label": "Send WhatsApp message",
+    ariaLabel: "Send WhatsApp message",
   },
 
   {
     href: "https://t.me/wzaldivar",
     icon: TelegramIcon,
-    "aria-label": "Send Telegram message",
+    ariaLabel: "Send Telegram message",
   },
 ];
