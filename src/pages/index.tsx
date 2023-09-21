@@ -1,5 +1,6 @@
-import Head from "next/head";
 import { Inter } from "next/font/google";
+import Head from "next/head";
+
 import AvatarSection from "@/components/avatar-section";
 import FooSection from "@/components/foo-section";
 import FooterSection from "@/components/footer-section";

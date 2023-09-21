@@ -1,12 +1,13 @@
-import Link from "next/link";
+import { FunctionComponent } from "react";
+
+import { FaTelegram as TelegramIcon } from "react-icons/fa";
+import { MdEmail as EmailIcon } from "react-icons/md";
 import {
-  RiLinkedinBoxFill as LinkedinIcon,
   RiGithubFill as GithubIcon,
+  RiLinkedinBoxFill as LinkedinIcon,
   RiWhatsappFill as WhatsappIcon,
 } from "react-icons/ri";
-import { MdEmail as EmailIcon } from "react-icons/md";
-import { FaTelegram as TelegramIcon } from "react-icons/fa";
-import { FunctionComponent } from "react";
+
 import SocialMediaButton from "@/components/social-media-button";
 
 const SocialMediaBar: FunctionComponent = () => {

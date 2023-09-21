@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react";
-import { IconType } from "react-icons";
+
 import Link from "next/link";
+
+import { IconType } from "react-icons";
 
 interface SocialMediaButtonProps {
   href: string;

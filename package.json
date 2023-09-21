@@ -22,7 +22,23 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "prettier": "^3.0.3",
     "sass": "^1.58.0"
+  },
+  "prettier": {
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+      "^react$",
+      "^next/(.*)$",
+      "^react(.*)$",
+      "<THIRD_PARTY_MODULES>",
+      "^@/(.*)$",
+      "^\\./(.*)$",
+      "^\\.\\./(.*)$"
+    ],
+    "importOrderSeparation": true
   }
 }

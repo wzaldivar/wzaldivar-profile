@@ -17,13 +17,16 @@ $social-media-color-hover: #666666;
 .social-link {
   font-size: 2rem;
   color: $social-media-color;
+
   :visited {
     color: $social-media-color;
   }
+
   :hover {
     font-size: 2.5rem;
     color: $social-media-color-hover;
   }
+
   :active {
     color: $social-media-color;
   }

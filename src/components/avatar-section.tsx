@@ -1,8 +1,11 @@
-import Image from "next/image";
-import profileImage from "../../public/profile_picture.jpeg";
-import SocialMediaBar from "./social-media-bar";
-import ScrollButton from "./scroll-button";
 import { FunctionComponent } from "react";
+
+import Image from "next/image";
+
+import ScrollButton from "@/components/scroll-button";
+import SocialMediaBar from "@/components/social-media-bar";
+
+import profileImage from "../../public/profile_picture.jpeg";
 
 const AvatarSection: FunctionComponent = () => {
   return (

@@ -1,5 +1,6 @@
-import SocialMediaBar from "./social-media-bar";
 import { FunctionComponent } from "react";
+
+import SocialMediaBar from "@/components/social-media-bar";
 
 const FooterSection: FunctionComponent = () => {
   const currentYear = new Date().getFullYear();

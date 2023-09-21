@@ -5,8 +5,9 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { FaChevronDown as DownArrowIcon } from "react-icons/fa";
+
 import { IconType } from "react-icons";
+import { FaChevronDown as DownArrowIcon } from "react-icons/fa";
 
 interface ScrollButtonProps {
   sectionId: string;
