@@ -1,27 +1,21 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from 'react';
 
-export const CopyrightLabel: FunctionComponent = () => {
-  const [currentYear, setCurrentYear] = useState<number>();
-  const copyrightLabel = `Walber Zaldivar © ${currentYear ? currentYear : ""}`;
+import { useCurrentYear } from './hooks/use-current-year';
 
-  useEffect(() => {
-    const getNewYear = () => new Date().getFullYear();
+export interface CopyrightLabelProps {
+  copyrightOwner: string;
+}
 
-    if (currentYear == undefined) {
-      setCurrentYear(getNewYear());
-    }
+export const CopyrightLabel: FunctionComponent<CopyrightLabelProps> = (
+  props,
+) => {
+  const { copyrightOwner } = props;
 
-    const timer = setInterval(() => {
-      const newYear = getNewYear();
-      if (newYear != currentYear) {
-        setCurrentYear(newYear);
-      }
-    }, 1000);
+  const currentYear = useCurrentYear();
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, [currentYear]);
+  const copyrightLabel = `${copyrightOwner} © ${
+    currentYear != null ? currentYear : ''
+  }`;
 
   return <div className="copyright-label">{copyrightLabel}</div>;
 };

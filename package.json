@@ -39,6 +39,10 @@
       "^\\./(.*)$",
       "^\\.\\./(.*)$"
     ],
-    "importOrderSeparation": true
+    "importOrderSeparation": true,
+    "singleQuote": true,
+    "jsxSingleQuote": false,
+    "quoteProps": "consistent",
+    "trailingComma": "all"
   }
 }

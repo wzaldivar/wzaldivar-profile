@@ -1,13 +1,29 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 
 import Image from "next/image";
 
 import ScrollButton from "@/components/scroll-button";
 import SocialMediaBar from "@/components/social-media";
 
-import profileImage from "../../public/profile_picture.jpeg";
+type ImageProps = React.ComponentProps<typeof Image>;
 
-const AvatarSection: FunctionComponent = () => {
+type ScrollSectionProps = {
+  sectionId: string;
+};
+
+const AvatarSection: FunctionComponent<ImageProps & ScrollSectionProps> = (
+  props,
+) => {
+  const profilePicture = "/profile_picture.jpeg";
+
+  const {
+    alt = "Profile Picture of Walber Zaldivar",
+    src = profilePicture,
+    priority,
+    fill,
+    ...extra
+  } = props;
+
   return (
     <div className="height-full section-avatar">
       <div className="avatar-frame">
@@ -15,11 +31,12 @@ const AvatarSection: FunctionComponent = () => {
           priority
           className="avatar"
           fill
-          alt="Profile Picture of Walber Zaldivar"
-          src={profileImage}
-        ></Image>
+          alt={alt}
+          src={src}
+          {...extra}
+        />
       </div>
-      {/*Name and Title*/}
+
       <div className="title">Walber Zaldivar</div>
       <div className="subtitle">Software Developer</div>
 
