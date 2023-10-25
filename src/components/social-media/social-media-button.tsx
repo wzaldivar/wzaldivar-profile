@@ -1,19 +1,19 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
-export interface SocialMediaButtonProps {
-  href: string;
+type LinkProps = React.ComponentProps<typeof Link>;
+
+export type SocialMediaButtonProps = LinkProps & {
   icon: IconType;
-  ariaLabel?: string | undefined;
-}
+};
 
 export const SocialMediaButton: FunctionComponent<SocialMediaButtonProps> = (
   props,
 ) => {
-  const { href, icon: SocialMediaIcon, ariaLabel } = props;
+  const { href, 'icon': SocialMediaIcon, 'aria-label': ariaLabel } = props;
 
   return (
     <div className="social-link-frame">

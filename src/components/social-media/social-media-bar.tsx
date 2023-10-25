@@ -1,23 +1,23 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
 import {
   socialMediaBarLabel,
   socialMediaProps,
-} from "@/components/social-media/data/social-media-props";
-import { SocialMediaButton } from "@/components/social-media/social-media-button";
+} from '@/components/social-media/data/social-media-props';
+import { SocialMediaButton } from '@/components/social-media/social-media-button';
 
 export const SocialMediaBar: FunctionComponent = () => {
   return (
     <div className="social-link-bar" aria-label={socialMediaBarLabel}>
       {socialMediaProps.map((props, index) => {
-        const { href, icon, ariaLabel } = props;
+        const { href, icon, 'aria-label': ariaLabel } = props;
 
         return (
           <SocialMediaButton
-            key={index}
+            key={`smb-${index}`}
             href={href}
             icon={icon}
-            ariaLabel={ariaLabel}
+            aria-label={ariaLabel}
           />
         );
       })}

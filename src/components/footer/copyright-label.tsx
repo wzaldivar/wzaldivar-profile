@@ -3,13 +3,13 @@ import { FunctionComponent, useEffect, useState } from 'react';
 import { useCurrentYear } from './hooks/use-current-year';
 
 export interface CopyrightLabelProps {
-  copyrightOwner: string;
+  'copyright-owner': string;
 }
 
 export const CopyrightLabel: FunctionComponent<CopyrightLabelProps> = (
   props,
 ) => {
-  const { copyrightOwner } = props;
+  const { 'copyright-owner': copyrightOwner } = props;
 
   const currentYear = useCurrentYear();
 
