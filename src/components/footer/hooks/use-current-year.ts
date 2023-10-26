@@ -9,30 +9,16 @@ export const getTimerInterval = (): number => {
   const hour = 60 * 60 * 1000;
   const minute = 60 * 1000;
   const second = 1000;
+
   const timeToNextYear =
     new Date(getCurrentYear() + 1, 0, 1, 0, 0, 0, 0).getTime() -
     new Date().getTime();
 
-  if (timeToNextYear > fortnight + 3 * day) {
-    return fortnight;
-  }
-
-  if (timeToNextYear > week + 3 * day) {
-    return week;
-  }
-
-  if (timeToNextYear > day + 4 * hour) {
-    return day;
-  }
-
-  if (timeToNextYear > hour + 30 * minute) {
-    return hour;
-  }
-
-  if (timeToNextYear > 15 * minute) {
-    return 10 * minute;
-  }
-
+  if (timeToNextYear > fortnight + 3 * day) return fortnight;
+  if (timeToNextYear > week + 3 * day) return week;
+  if (timeToNextYear > day + 4 * hour) return day;
+  if (timeToNextYear > hour + 30 * minute) return hour;
+  if (timeToNextYear > 15 * minute) return 10 * minute;
   return second;
 };
 
@@ -63,7 +49,7 @@ export const useCurrentYear = () => {
 
       const newYear = getCurrentYear();
 
-      if (newYear != currentYear) {
+      if (newYear !== currentYear) {
         setCurrentYear(newYear);
       }
     };
