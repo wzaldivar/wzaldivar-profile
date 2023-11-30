@@ -1,32 +1,53 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const getCurrentYear = (): number => new Date().getFullYear();
 
-export const getTimerInterval = (): number => {
-  const fortnight = 14 * 24 * 60 * 60 * 1000;
-  const week = 7 * 24 * 60 * 60 * 1000;
-  const day = 24 * 60 * 60 * 1000;
-  const hour = 60 * 60 * 1000;
-  const minute = 60 * 1000;
-  const second = 1000;
+const MILLISECONDS_IN_SECOND = 1000;
+const MILLISECONDS_IN_MINUTE = 60 * MILLISECONDS_IN_SECOND;
+const MILLISECONDS_IN_HOUR = 60 * MILLISECONDS_IN_MINUTE;
+const MILLISECONDS_IN_DAY = 24 * MILLISECONDS_IN_HOUR;
+const MILLISECONDS_IN_WEEK = 7 * MILLISECONDS_IN_DAY;
+const MILLISECONDS_IN_FORTNIGHT = 2 * MILLISECONDS_IN_WEEK;
 
+const timeThresholds = [
+  {
+    threshold: MILLISECONDS_IN_FORTNIGHT + 3 * MILLISECONDS_IN_DAY,
+    interval: MILLISECONDS_IN_FORTNIGHT,
+  },
+  {
+    threshold: MILLISECONDS_IN_WEEK + 3 * MILLISECONDS_IN_DAY,
+    interval: MILLISECONDS_IN_WEEK,
+  },
+  {
+    threshold: MILLISECONDS_IN_DAY + 4 * MILLISECONDS_IN_HOUR,
+    interval: MILLISECONDS_IN_DAY,
+  },
+  {
+    threshold: MILLISECONDS_IN_HOUR + 30 * MILLISECONDS_IN_MINUTE,
+    interval: MILLISECONDS_IN_HOUR,
+  },
+  {
+    threshold: 15 * MILLISECONDS_IN_MINUTE,
+    interval: 10 * MILLISECONDS_IN_MINUTE,
+  },
+];
+
+export const getTimerInterval = (): number => {
   const timeToNextYear =
     new Date(getCurrentYear() + 1, 0, 1, 0, 0, 0, 0).getTime() -
     new Date().getTime();
 
-  if (timeToNextYear > fortnight + 3 * day) return fortnight;
-  if (timeToNextYear > week + 3 * day) return week;
-  if (timeToNextYear > day + 4 * hour) return day;
-  if (timeToNextYear > hour + 30 * minute) return hour;
-  if (timeToNextYear > 15 * minute) return 10 * minute;
-  return second;
+  return (
+    timeThresholds.find((value) => timeToNextYear > value.threshold)
+      ?.interval || MILLISECONDS_IN_SECOND
+  );
 };
 
 export const useCurrentYear = () => {
   const [currentYear, setCurrentYear] = useState<number>(getCurrentYear());
   const timerIntervalRef = useRef<number>(getTimerInterval());
 
-  const timerRef = useRef<NodeJS.Timer>();
+  const timerRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const clearTimer = () => {
