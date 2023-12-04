@@ -1,14 +1,14 @@
 import { FunctionComponent } from 'react';
 
 import {
-  socialMediaBarLabel,
+  socialMediaBarAriaLabel,
   socialMediaProps,
 } from '@/components/social-media/data/social-media-props';
 import { SocialMediaButton } from '@/components/social-media/social-media-button';
 
 export const SocialMediaBar: FunctionComponent = () => {
   return (
-    <div className="social-link-bar" aria-label={socialMediaBarLabel}>
+    <div className="social-link-bar" aria-label={socialMediaBarAriaLabel}>
       {socialMediaProps.map((props, index) => {
         const { href, icon, 'aria-label': ariaLabel } = props;
 

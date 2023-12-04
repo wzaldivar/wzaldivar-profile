@@ -8,7 +8,7 @@ import {
 
 import { SocialMediaButtonProps } from '@/components/social-media/social-media-button';
 
-export const socialMediaBarLabel = 'Contact Walber Zaldivar';
+export const socialMediaBarAriaLabel = 'Contact Walber Zaldivar';
 
 export const socialMediaProps: SocialMediaButtonProps[] = [
   {
