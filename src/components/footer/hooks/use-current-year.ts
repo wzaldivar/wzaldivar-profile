@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-const getCurrentYear = (): number => new Date().getFullYear();
-
 const MILLISECONDS_IN_SECOND = 1000;
 const MILLISECONDS_IN_MINUTE = 60 * MILLISECONDS_IN_SECOND;
 const MILLISECONDS_IN_HOUR = 60 * MILLISECONDS_IN_MINUTE;
@@ -32,6 +30,8 @@ const timeThresholds = [
   },
 ];
 
+const getCurrentYear = (): number => new Date().getFullYear();
+
 export const getTimerInterval = (): number => {
   const timeToNextYear =
     new Date(getCurrentYear() + 1, 0, 1, 0, 0, 0, 0).getTime() -
@@ -45,34 +45,38 @@ export const getTimerInterval = (): number => {
 
 export const useCurrentYear = () => {
   const [currentYear, setCurrentYear] = useState<number>(getCurrentYear());
-  const timerIntervalRef = useRef<number>(getTimerInterval());
 
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerInterval = useRef<number>(getTimerInterval());
+  const timer = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const clearTimer = () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
+      if (timer.current) {
+        clearInterval(timer.current);
       }
     };
 
     const startTimer = () => {
       clearTimer();
-      timerRef.current = setInterval(handleTimer, timerIntervalRef.current);
+      timer.current = setInterval(handleTimer, timerInterval.current);
+    };
+
+    const updateTimerInterval = (interval: number) => {
+      if (interval !== timerInterval.current) {
+        timerInterval.current = interval;
+        startTimer();
+      }
+    };
+
+    const updateYear = (year: number) => {
+      if (year !== currentYear) {
+        setCurrentYear(year);
+      }
     };
 
     const handleTimer = () => {
-      const newTimerInterval = getTimerInterval();
-      if (newTimerInterval !== timerIntervalRef.current) {
-        timerIntervalRef.current = newTimerInterval;
-        startTimer();
-      }
-
-      const newYear = getCurrentYear();
-
-      if (newYear !== currentYear) {
-        setCurrentYear(newYear);
-      }
+      updateTimerInterval(getTimerInterval());
+      updateYear(getCurrentYear());
     };
 
     startTimer();
@@ -80,7 +84,7 @@ export const useCurrentYear = () => {
     return () => {
       clearTimer();
     };
-  }, [currentYear]);
+  }, []);
 
   return currentYear;
 };
