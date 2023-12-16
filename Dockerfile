@@ -1,17 +1,17 @@
-FROM node:18 AS deps
+FROM node:20 AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN npm install
 
-FROM node:18 AS builder
+FROM node:20 AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npm run build
 
-FROM node:18 AS runner
+FROM node:20 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
