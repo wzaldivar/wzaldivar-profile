@@ -1,4 +1,6 @@
 #! /bin/bash
 
-docker build --pull -t $1:latest .
+export IMAGE_TAG=stable
+
+docker build --pull -t $1:$IMAGE_TAG .
 

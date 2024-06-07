@@ -2,7 +2,7 @@ FROM node:18 AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 
 FROM node:18 AS builder
 WORKDIR /app
