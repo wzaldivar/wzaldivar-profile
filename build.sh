@@ -1,11 +1,6 @@
 #! /bin/bash
 
-git checkout main
-git pull
+export IMAGE_TAG=latest
 
-docker build -t $1:latest .
+docker build --pull -t $1:$IMAGE_TAG .
 
-git checkout release
-git pull
-
-docker build -t $1:stable .
