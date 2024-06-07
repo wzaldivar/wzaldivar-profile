@@ -1,17 +1,19 @@
-FROM node:18 AS deps
+ARG NODE_VERSION=18
+
+FROM node:$NODE_VERSION AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN npm ci
 
-FROM node:18 AS builder
+FROM node:$NODE_VERSION AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npm run build
 
-FROM node:18 AS runner
+FROM node:$NODE_VERSION AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
