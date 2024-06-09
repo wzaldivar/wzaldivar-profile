@@ -1,4 +1,4 @@
-ARG NODE_VERSION=lts
+ARG NODE_VERSION=lts-slim
 
 FROM node:$NODE_VERSION AS deps
 WORKDIR /app
