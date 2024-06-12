@@ -19,7 +19,7 @@ jobs:
     - name: Determine tag
       id: determine-tag
       run: |
-        if [[ "${{ github.ref }}" == "refs/heads/release" ]]; then
+        if [[ "${{ github.ref }}" == "refs/heads/release" ]] || [[ "${{ github.event.pull_request.base.ref }}" == "release" ]]; then
           echo "TAG=release" >> $GITHUB_ENV
         else
           echo "TAG=latest" >> $GITHUB_ENV
