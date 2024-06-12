@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "release" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "release" ]
 
 jobs:
 
@@ -16,7 +16,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Determine tag
+      id: determine-tag
+      run: |
+        if [[ "${{ github.ref }}" == "refs/heads/release" ]]; then
+          echo "TAG=release" >> $GITHUB_ENV
+        else
+          echo "TAG=latest" >> $GITHUB_ENV
+        fi
+
     - name: Login to registry
+      if: ${{ github.event_name == 'push' }}
       uses: docker/login-action@v3
       with:
         registry: ${{ secrets.REGISTRY_HOST }}
@@ -26,5 +36,5 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
-        push: true
-        tags: ${{ secrets.REGISTRY_HOST }}/wzaldivar-profile
+        push: ${{ github.event_name == 'push' }}
+        tags: ${{ secrets.REGISTRY_HOST }}/wzaldivar-profile:${{ env.TAG }}
