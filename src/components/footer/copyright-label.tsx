@@ -6,6 +6,10 @@ export interface CopyrightLabelProps {
   'copyright-owner': string;
 }
 
+function formatYear(year: number): string {
+  return `- ${year}`;
+}
+
 export const CopyrightLabel: FunctionComponent<CopyrightLabelProps> = (
   props,
 ) => {
@@ -13,7 +17,7 @@ export const CopyrightLabel: FunctionComponent<CopyrightLabelProps> = (
 
   const currentYear = useCurrentYear();
 
-  const copyrightLabel = `${copyrightOwner}${currentYear == undefined ? '' : ` - ${currentYear}`}`;
+  const copyrightLabel = `${copyrightOwner}${currentYear == undefined ? '' : formatYear(currentYear)}`;
 
   return <div className="copyright-label">{copyrightLabel}</div>;
 };
