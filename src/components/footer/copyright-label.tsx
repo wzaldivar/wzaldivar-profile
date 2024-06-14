@@ -13,9 +13,7 @@ export const CopyrightLabel: FunctionComponent<CopyrightLabelProps> = (
 
   const currentYear = useCurrentYear();
 
-  const copyrightLabel = `${copyrightOwner} © ${
-    currentYear != undefined ? currentYear : ''
-  }`;
+  const copyrightLabel = `${copyrightOwner}${currentYear == undefined ? '' : ` - ${currentYear}`}`;
 
   return <div className="copyright-label">{copyrightLabel}</div>;
 };
