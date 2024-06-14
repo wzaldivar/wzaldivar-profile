@@ -3,8 +3,6 @@ import React, { FunctionComponent } from 'react';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 
-import { type } from 'os';
-
 import ScrollButton from '@/components/scroll-button';
 import SocialMediaBar from '@/components/social-media';
 
