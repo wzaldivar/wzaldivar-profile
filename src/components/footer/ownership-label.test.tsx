@@ -5,10 +5,6 @@ import { render } from '@testing-library/react';
 
 import { OwnershipLabel } from './ownership-label';
 
-jest.mock('./hooks/use-current-year', () => ({
-  useCurrentYear: () => 2023,
-}));
-
 describe('OwnershipLabel', () => {
   it('renders with owner and current year', () => {
     jest.useFakeTimers();
