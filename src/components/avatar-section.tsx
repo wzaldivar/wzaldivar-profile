@@ -3,8 +3,8 @@ import React, { FunctionComponent } from 'react';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 
+import MySocialMediaBar from '@/components/my-social-media-bar';
 import ScrollButton from '@/components/scroll-button';
-import SocialMediaBar from '@/components/social-media';
 
 type ImageProps = React.ComponentProps<typeof Image>;
 
@@ -46,7 +46,7 @@ const AvatarSection: FunctionComponent<AvatarSectionProps> = (props) => {
       <div className="title">Walber Zaldivar</div>
       <div className="subtitle">Software Developer</div>
 
-      <SocialMediaBar />
+      <MySocialMediaBar />
       <ScrollButton sectionId={sectionId} />
     </div>
   );

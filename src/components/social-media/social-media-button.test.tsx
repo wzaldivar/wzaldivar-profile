@@ -5,8 +5,7 @@ import { FaSmile as TestIcon } from 'react-icons/fa';
 import { describe, expect, it } from '@jest/globals';
 import { render } from '@testing-library/react';
 
-import {
-  SocialMediaButton,
+import SocialMediaButton, {
   SocialMediaButtonProps,
 } from './social-media-button';
 
@@ -18,9 +17,7 @@ describe('SocialMediaButton', () => {
   };
 
   it('renders with valid props', () => {
-    const { getByText, getByRole } = render(
-      <SocialMediaButton {...validProps} />,
-    );
+    const { getByRole } = render(<SocialMediaButton {...validProps} />);
 
     const link = getByRole('link');
     expect(link).toBeInTheDocument();

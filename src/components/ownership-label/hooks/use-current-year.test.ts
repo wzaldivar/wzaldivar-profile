@@ -1,7 +1,7 @@
-import { expect, jest, it, describe } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 import { act, renderHook } from '@testing-library/react';
 
-import { getTimerInterval, useCurrentYear } from './use-current-year';
+import useCurrentYear, { getTimerInterval } from './use-current-year';
 
 describe('useCurrentYear', () => {
   it('getTimerInterval should decrease to 1 second', () => {

@@ -16,7 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/components/footer/*": ["./src/components/footer/*"],
+      "@/components/ownership-label/*": ["./src/components/ownership-label/*"],
+      "@/components/social-media/*": ["./src/components/social-media/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

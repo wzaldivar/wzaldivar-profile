@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-const MILLISECONDS_IN_SECOND = 1000;
-const MILLISECONDS_IN_MINUTE = 60 * MILLISECONDS_IN_SECOND;
-const MILLISECONDS_IN_HOUR = 60 * MILLISECONDS_IN_MINUTE;
-const MILLISECONDS_IN_DAY = 24 * MILLISECONDS_IN_HOUR;
-const MILLISECONDS_IN_WEEK = 7 * MILLISECONDS_IN_DAY;
-const MILLISECONDS_IN_FORTNIGHT = 2 * MILLISECONDS_IN_WEEK;
+export const MILLISECONDS_IN_SECOND = 1000;
+export const MILLISECONDS_IN_MINUTE = 60 * MILLISECONDS_IN_SECOND;
+export const MILLISECONDS_IN_HOUR = 60 * MILLISECONDS_IN_MINUTE;
+export const MILLISECONDS_IN_DAY = 24 * MILLISECONDS_IN_HOUR;
+export const MILLISECONDS_IN_WEEK = 7 * MILLISECONDS_IN_DAY;
+export const MILLISECONDS_IN_FORTNIGHT = 2 * MILLISECONDS_IN_WEEK;
 
 const timeThresholds = [
   {
@@ -43,7 +43,7 @@ export const getTimerInterval = (): number => {
   );
 };
 
-export const useCurrentYear = () => {
+const useCurrentYear = () => {
   const [currentYear, setCurrentYear] = useState<number>(getCurrentYear());
 
   const timerInterval = useRef<number>(getTimerInterval());
@@ -88,3 +88,5 @@ export const useCurrentYear = () => {
 
   return currentYear;
 };
+
+export default useCurrentYear;

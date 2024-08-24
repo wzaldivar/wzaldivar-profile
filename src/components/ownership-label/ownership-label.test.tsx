@@ -3,7 +3,10 @@ import React from 'react';
 import { describe, expect, it, jest } from '@jest/globals';
 import { act, render, waitFor } from '@testing-library/react';
 
-import { OwnershipLabel } from './ownership-label';
+import { MILLISECONDS_IN_WEEK } from './hooks/use-current-year';
+import OwnershipLabel from './ownership-label';
+
+const MILLISECONDS_GREATER_THAN_A_YEAR = 53 * MILLISECONDS_IN_WEEK;
 
 describe('OwnershipLabel', () => {
   it('renders with owner and current year', () => {
@@ -35,7 +38,7 @@ describe('OwnershipLabel', () => {
     expect(getByText('John Doe - 2020')).toBeInTheDocument();
 
     await act(async () => {
-      jest.advanceTimersByTime(400 * 24 * 60 * 60 * 1000);
+      jest.advanceTimersByTime(MILLISECONDS_GREATER_THAN_A_YEAR);
     });
 
     await waitFor(() =>
@@ -54,7 +57,7 @@ describe('OwnershipLabel', () => {
     expect(getByText('2020')).toBeInTheDocument();
 
     await act(async () => {
-      jest.advanceTimersByTime(400 * 24 * 60 * 60 * 1000);
+      jest.advanceTimersByTime(MILLISECONDS_GREATER_THAN_A_YEAR);
     });
 
     await waitFor(() => expect(getByText('2021')).toBeInTheDocument());

@@ -1,14 +1,12 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import { useCurrentYear } from './hooks/use-current-year';
+import useCurrentYear from './hooks/use-current-year';
 
-export interface CopyrightLabelProps {
+interface CopyrightLabelProps {
   owner?: string;
 }
 
-export const OwnershipLabel: FunctionComponent<CopyrightLabelProps> = (
-  props,
-) => {
+const OwnershipLabel: FunctionComponent<CopyrightLabelProps> = (props) => {
   const { owner } = props;
 
   const year = useCurrentYear();
@@ -17,3 +15,5 @@ export const OwnershipLabel: FunctionComponent<CopyrightLabelProps> = (
 
   return <div className="ownership-label">{copyrightLabel}</div>;
 };
+
+export default OwnershipLabel;

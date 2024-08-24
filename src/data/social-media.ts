@@ -6,11 +6,11 @@ import {
   RiWhatsappFill as WhatsappIcon,
 } from 'react-icons/ri';
 
-import { SocialMediaButtonProps } from '@/components/social-media/social-media-button';
+import { SocialMediaButtonProps } from '@/components/social-media';
 
 export const socialMediaBarAriaLabel = 'Contact Walber Zaldivar';
 
-export const socialMediaProps: SocialMediaButtonProps[] = [
+export const socialMediaButtonsProps: SocialMediaButtonProps[] = [
   {
     'href': 'https://linkedin.com/in/walber-zaldivar-herrera',
     'icon': LinkedinIcon,

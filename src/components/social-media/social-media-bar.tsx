@@ -1,26 +1,34 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import {
-  socialMediaBarAriaLabel,
-  socialMediaProps,
-} from '@/components/social-media/data/social-media-props';
-import { SocialMediaButton } from '@/components/social-media/social-media-button';
+import SocialMediaButton, {
+  SocialMediaButtonProps,
+} from './social-media-button';
 
-export const SocialMediaBar: FunctionComponent = () => {
+export type SocialMediaBarProps = React.ComponentProps<'div'> & {
+  buttons?: SocialMediaButtonProps[];
+};
+
+const SocialMediaBar: FunctionComponent<SocialMediaBarProps> = ({
+  buttons,
+  ...divProps
+}) => {
   return (
-    <div className="social-link-bar" aria-label={socialMediaBarAriaLabel}>
-      {socialMediaProps.map((props, index) => {
-        const { href, icon, 'aria-label': ariaLabel } = props;
-
+    <div
+      {...divProps}
+      className="social-link-bar"
+      data-testid="social-media-bar"
+    >
+      {buttons?.map((buttonProps, index) => {
         return (
           <SocialMediaButton
+            {...buttonProps}
             key={`smb-${index}`}
-            href={href}
-            icon={icon}
-            aria-label={ariaLabel}
+            data-testid={`smb-${index}`}
           />
         );
       })}
     </div>
   );
 };
+
+export default SocialMediaBar;

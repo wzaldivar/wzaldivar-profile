@@ -1,13 +1,12 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import SocialMediaBar from '@/components/social-media';
-
-import { OwnershipLabel } from './ownership-label';
+import MySocialMediaBar from '@/components/my-social-media-bar';
+import OwnershipLabel from '@/components/ownership-label';
 
 export const FooterSection: FunctionComponent = () => {
   return (
     <div className="section-footer">
-      <SocialMediaBar />
+      <MySocialMediaBar />
       <OwnershipLabel owner="Walber Zaldivar" />
     </div>
   );

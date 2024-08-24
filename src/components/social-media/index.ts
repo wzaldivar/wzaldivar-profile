@@ -1,3 +1,4 @@
-import { SocialMediaBar } from '@/components/social-media/social-media-bar';
+import SocialMediaBar from './social-media-bar';
 
+export { type SocialMediaButtonProps } from './social-media-button';
 export default SocialMediaBar;

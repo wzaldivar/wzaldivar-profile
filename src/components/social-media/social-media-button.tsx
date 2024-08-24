@@ -4,27 +4,21 @@ import Link from 'next/link';
 
 import { IconType } from 'react-icons';
 
-type LinkProps = React.ComponentProps<typeof Link>;
-
-export type SocialMediaButtonProps = LinkProps & {
+export type SocialMediaButtonProps = React.ComponentProps<typeof Link> & {
   icon: IconType;
 };
 
-export const SocialMediaButton: FunctionComponent<SocialMediaButtonProps> = (
-  props,
-) => {
-  const { href, 'icon': SocialMediaIcon, 'aria-label': ariaLabel } = props;
-
+const SocialMediaButton: FunctionComponent<SocialMediaButtonProps> = ({
+  icon: SocialMediaIcon,
+  ...linkProps
+}) => {
   return (
     <div className="social-link-frame">
-      <Link
-        className="social-link"
-        href={href}
-        rel="noopener noreferrer"
-        aria-label={ariaLabel}
-      >
+      <Link {...linkProps} className="social-link" rel="noopener noreferrer">
         <SocialMediaIcon aria-hidden={true} />
       </Link>
     </div>
   );
 };
+
+export default SocialMediaButton;
