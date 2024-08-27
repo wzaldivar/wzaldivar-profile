@@ -40,3 +40,4 @@ next-env.d.ts
 
 # SonarLint
 /.idea/sonarlint/
+/.idea/sonarlint.xml
