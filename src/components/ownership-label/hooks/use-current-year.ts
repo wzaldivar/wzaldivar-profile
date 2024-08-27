@@ -30,7 +30,7 @@ const timeThresholds = [
   },
 ];
 
-const getCurrentYear = (): number => new Date().getFullYear();
+export const getCurrentYear = (): number => new Date().getFullYear();
 
 export const getTimerInterval = (): number => {
   const timeToNextYear =
@@ -39,7 +39,7 @@ export const getTimerInterval = (): number => {
 
   return (
     timeThresholds.find((value) => timeToNextYear > value.threshold)
-      ?.interval || MILLISECONDS_IN_SECOND
+      ?.interval ?? MILLISECONDS_IN_SECOND
   );
 };
 
@@ -84,7 +84,7 @@ const useCurrentYear = () => {
     return () => {
       clearTimer();
     };
-  }, []);
+  }, [currentYear]);
 
   return currentYear;
 };

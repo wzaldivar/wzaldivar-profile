@@ -11,7 +11,7 @@ const OwnershipLabel: FunctionComponent<CopyrightLabelProps> = (props) => {
 
   const year = useCurrentYear();
 
-  const copyrightLabel = `${owner ? owner : ''}${owner && year ? ' - ' : ''}${year ? year : ''}`;
+  const copyrightLabel = `${owner ?? ''}${owner && year ? ' - ' : ''}${year ?? ''}`;
 
   return <div className="ownership-label">{copyrightLabel}</div>;
 };

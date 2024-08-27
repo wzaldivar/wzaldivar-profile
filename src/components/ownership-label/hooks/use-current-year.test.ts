@@ -1,39 +1,41 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 
-import useCurrentYear, { getTimerInterval } from './use-current-year';
+import { advanceYear, setupTimers } from './timers-test-utils';
+import useCurrentYear, {
+  getTimerInterval,
+  MILLISECONDS_IN_FORTNIGHT,
+  MILLISECONDS_IN_SECOND,
+} from './use-current-year';
 
 describe('useCurrentYear', () => {
-  it('getTimerInterval should decrease to 1 second', () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2020-01-01T00:00:00'));
+  const initialYear = 2020;
+  const endYear = 2021;
+  setupTimers(initialYear);
 
+  it('getTimerInterval should decrease to 1 second', () => {
     let timerInterval = getTimerInterval();
 
-    while (timerInterval != 1000) {
+    while (timerInterval != MILLISECONDS_IN_SECOND) {
       jest.advanceTimersByTime(timerInterval);
       const newTimerInterval = getTimerInterval();
+
       expect(newTimerInterval).toBeLessThanOrEqual(timerInterval);
-      if (newTimerInterval !== timerInterval) {
-        timerInterval = getTimerInterval();
+
+      if (newTimerInterval != timerInterval) {
+        timerInterval = newTimerInterval;
       }
     }
-
-    jest.useRealTimers();
   });
 
   it('should update when year change', () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2020-01-01T00:00:00'));
     const { result } = renderHook(() => useCurrentYear());
 
-    expect(result.current).toBe(2020);
+    expect(result.current).toBe(initialYear);
 
-    while (result.current === 2020) {
-      act(() => jest.advanceTimersByTime(getTimerInterval()));
-    }
+    advanceYear();
 
-    expect(result.current).toBe(2021);
-    jest.useRealTimers();
+    expect(result.current).toBe(endYear);
+    expect(getTimerInterval()).toBe(MILLISECONDS_IN_FORTNIGHT);
   });
 });

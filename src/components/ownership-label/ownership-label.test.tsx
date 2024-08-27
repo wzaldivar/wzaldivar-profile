@@ -1,67 +1,47 @@
 import React from 'react';
 
-import { describe, expect, it, jest } from '@jest/globals';
-import { act, render, waitFor } from '@testing-library/react';
+import { describe, expect, it } from '@jest/globals';
+import { render } from '@testing-library/react';
 
-import { MILLISECONDS_IN_WEEK } from './hooks/use-current-year';
+import { advanceYear, setupTimers } from './hooks/timers-test-utils';
 import OwnershipLabel from './ownership-label';
 
-const MILLISECONDS_GREATER_THAN_A_YEAR = 53 * MILLISECONDS_IN_WEEK;
-
 describe('OwnershipLabel', () => {
+  const owner = 'John Doe';
+  const initialYear = 2020;
+  const endYear = 2021;
+
+  setupTimers(initialYear);
+
   it('renders with owner and current year', () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2020-01-01T00:00:00'));
+    const { getByText } = render(<OwnershipLabel owner={owner} />);
 
-    const { getByText } = render(<OwnershipLabel owner="John Doe" />);
-    expect(getByText('John Doe - 2020')).toBeInTheDocument();
-
-    jest.useRealTimers();
+    expect(getByText(`${owner} - ${initialYear}`)).toBeInTheDocument();
   });
 
   it('renders with no owner but current year', () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2020-01-01T00:00:00'));
-
     const { getByText } = render(<OwnershipLabel />);
-    expect(getByText('2020')).toBeInTheDocument();
 
-    jest.useRealTimers();
+    expect(getByText(`${initialYear}`)).toBeInTheDocument();
   });
 
   it('auto-renders when year changes with owner', async () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2020-01-01T00:00:00'));
+    const { getByText } = render(<OwnershipLabel owner={owner} />);
 
-    const { getByText } = render(<OwnershipLabel owner="John Doe" />);
+    expect(getByText(`${owner} - ${initialYear}`)).toBeInTheDocument();
 
-    expect(getByText('John Doe - 2020')).toBeInTheDocument();
+    advanceYear();
 
-    await act(async () => {
-      jest.advanceTimersByTime(MILLISECONDS_GREATER_THAN_A_YEAR);
-    });
-
-    await waitFor(() =>
-      expect(getByText('John Doe - 2021')).toBeInTheDocument(),
-    );
-
-    jest.useRealTimers();
+    expect(getByText(`${owner} - ${endYear}`)).toBeInTheDocument();
   });
 
   it('auto-renders when year changes without owner', async () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2020-01-01T00:00:00'));
-
     const { getByText } = render(<OwnershipLabel />);
 
-    expect(getByText('2020')).toBeInTheDocument();
+    expect(getByText(`${initialYear}`)).toBeInTheDocument();
 
-    await act(async () => {
-      jest.advanceTimersByTime(MILLISECONDS_GREATER_THAN_A_YEAR);
-    });
+    advanceYear();
 
-    await waitFor(() => expect(getByText('2021')).toBeInTheDocument());
-
-    jest.useRealTimers();
+    expect(getByText(`${endYear}`)).toBeInTheDocument();
   });
 });

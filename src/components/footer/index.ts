@@ -1,3 +1,3 @@
-import { FooterSection } from "@/components/footer/footer-section";
+import FooterSection from '@/components/footer/footer-section';
 
 export default FooterSection;
