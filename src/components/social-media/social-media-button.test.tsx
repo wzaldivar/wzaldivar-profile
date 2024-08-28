@@ -19,10 +19,12 @@ describe('SocialMediaButton', () => {
   it('renders with valid props', () => {
     const { getByRole } = render(<SocialMediaButton {...validProps} />);
 
+    const { 'aria-label': ariaLabel } = validProps;
+
     const link = getByRole('link');
     expect(link).toBeInTheDocument();
-    expect(link.getAttribute('aria-label')).toBe(validProps['aria-label']);
-    expect(link.getAttribute('href')).toBe(validProps['href']);
+    expect(link.getAttribute('aria-label')).toBe(ariaLabel);
+    expect(link.getAttribute('href')).toBe(validProps.href);
 
     const icon = link.querySelector('svg');
     expect(icon).toBeInTheDocument();

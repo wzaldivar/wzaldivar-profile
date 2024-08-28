@@ -23,10 +23,13 @@ describe('SocialMediaBar', () => {
     expect(socialMediaBar.getAttribute('aria-label')).toBe(
       socialMediaBarAriaLabel,
     );
-    socialMediaButtonsProps.forEach((props, index) => {
-      expect(getByTestId(`smb-${index}`).getAttribute('href')).toBe(props.href);
-      expect(getByTestId(`smb-${index}`).getAttribute('aria-label')).toBe(
-        props['aria-label'],
+    socialMediaButtonsProps.forEach((props) => {
+      const { 'aria-label': ariaLabel } = props;
+      expect(getByTestId(`test-${props.key}`).getAttribute('href')).toBe(
+        props.href,
+      );
+      expect(getByTestId(`test-${props.key}`).getAttribute('aria-label')).toBe(
+        ariaLabel,
       );
     });
   });

@@ -18,12 +18,13 @@ const SocialMediaBar: FunctionComponent<SocialMediaBarProps> = ({
       className="social-link-bar"
       data-testid="social-media-bar"
     >
-      {buttons?.map((buttonProps, index) => {
+      {buttons?.map((props) => {
+        const { key, ...buttonProps } = props;
         return (
           <SocialMediaButton
             {...buttonProps}
-            key={`smb-${index}`}
-            data-testid={`smb-${index}`}
+            key={props.key}
+            data-testid={props.key ? `test-${props.key}` : props.key}
           />
         );
       })}
