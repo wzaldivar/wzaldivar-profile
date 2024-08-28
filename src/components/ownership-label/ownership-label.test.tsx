@@ -44,4 +44,76 @@ describe('OwnershipLabel', () => {
 
     expect(getByText(`${endYear}`)).toBeInTheDocument();
   });
+
+  it('render with owner and no year do not change', () => {
+    const { getByText } = render(<OwnershipLabel owner={owner} year={false} />);
+
+    expect(getByText(owner)).toBeInTheDocument();
+
+    advanceYear();
+
+    expect(getByText(owner)).toBeInTheDocument();
+  });
+
+  it('render without owner and no year do not change', () => {
+    const { container } = render(<OwnershipLabel year={false} />);
+
+    let ownershipLabels = container.getElementsByClassName('ownership-label');
+    expect(ownershipLabels.length).toBe(1);
+    let ownershipLabel = ownershipLabels[0];
+    expect(ownershipLabel).toBeInTheDocument();
+    expect(ownershipLabel.textContent).toBe('');
+
+    advanceYear();
+
+    ownershipLabels = container.getElementsByClassName('ownership-label');
+    expect(ownershipLabels.length).toBe(1);
+    ownershipLabel = ownershipLabels[0];
+    expect(ownershipLabel).toBeInTheDocument();
+    expect(ownershipLabel.textContent).toBe('');
+  });
+
+  it('render with owner and fixed year do not change', () => {
+    const fixedYear = 2024;
+    const { getByText } = render(
+      <OwnershipLabel owner={owner} year={fixedYear} />,
+    );
+
+    expect(getByText(`${owner} - ${fixedYear}`)).toBeInTheDocument();
+
+    advanceYear();
+
+    expect(getByText(`${owner} - ${fixedYear}`)).toBeInTheDocument();
+  });
+
+  it('render without owner and fixed year do not change', () => {
+    const fixedYear = 2024;
+    const { getByText } = render(<OwnershipLabel year={fixedYear} />);
+
+    expect(getByText(`${fixedYear}`)).toBeInTheDocument();
+
+    advanceYear();
+
+    expect(getByText(`${fixedYear}`)).toBeInTheDocument();
+  });
+
+  it('auto-renders when year changes with owner and year', async () => {
+    const { getByText } = render(<OwnershipLabel owner={owner} year={true} />);
+
+    expect(getByText(`${owner} - ${initialYear}`)).toBeInTheDocument();
+
+    advanceYear();
+
+    expect(getByText(`${owner} - ${endYear}`)).toBeInTheDocument();
+  });
+
+  it('auto-renders when year changes without owner and year', async () => {
+    const { getByText } = render(<OwnershipLabel year={true} />);
+
+    expect(getByText(`${initialYear}`)).toBeInTheDocument();
+
+    advanceYear();
+
+    expect(getByText(`${endYear}`)).toBeInTheDocument();
+  });
 });
