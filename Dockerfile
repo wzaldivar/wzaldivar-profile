@@ -1,4 +1,4 @@
-ARG NODE_VERSION=18-slim
+ARG NODE_VERSION=lts-slim
 
 FROM node:$NODE_VERSION AS deps
 WORKDIR /app
@@ -16,7 +16,7 @@ RUN npm run build
 FROM node:$NODE_VERSION AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -30,6 +30,6 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
 
 CMD ["node", "server.js"]

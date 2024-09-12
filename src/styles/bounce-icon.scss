@@ -1,0 +1,56 @@
+.icon-container {
+  display: inline-block;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.icon-bouncer {
+  font-size: 1.5rem;
+  cursor: pointer;
+  animation: bounce 1s 2;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(0.5rem);
+  }
+}
+
+.fade-in {
+  pointer-events: auto;
+  animation: fade-in-animation 0.5s;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  animation: fade-out-animation 0.5s;
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out-animation {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}

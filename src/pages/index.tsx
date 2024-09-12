@@ -1,8 +1,6 @@
-import Head from "next/head";
-import { Inter } from "next/font/google";
-import AvatarSection from "@/components/avatar-section";
+import Head from 'next/head';
 
-const inter = Inter({ subsets: ["latin"] });
+import AvatarSection from '@/components/avatar-section';
 
 export default function Home() {
   return (

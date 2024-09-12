@@ -20,6 +20,9 @@ $small-device-breakpoint: 480px;
 .avatar {
   border-radius: 50%;
   object-fit: contain;
+  border-color: #b0b0b0;
+  border-width: .5rem;
+  border-style: solid;
 }
 
 @media (max-width: $small-device-breakpoint) {

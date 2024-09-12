@@ -1,0 +1,22 @@
+@import "common";
+@import "avatar";
+
+$footer-background-color: $avatar-background-color;
+
+.section-footer {
+  height: 30vh;
+  background-color: $footer-background-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ownership-label {
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $subtitle-color;
+}

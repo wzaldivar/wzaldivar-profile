@@ -1,8 +1,34 @@
-import Image from "next/image";
-import profileImage from "../../public/profile_picture.jpeg";
-import SocialMediaBar from "./social-media-bar";
+import React, { FunctionComponent } from 'react';
 
-export default function AvatarSection() {
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Image from 'next/image';
+
+import MySocialMediaBar from '@/components/my-social-media-bar';
+
+type ImageProps = React.ComponentProps<typeof Image>;
+
+type ScrollSectionProps = {
+  sectionId?: string;
+};
+
+type AvatarSectionProps = Omit<ImageProps, 'src' | 'alt'> &
+  ScrollSectionProps & {
+    src?: string | StaticImport;
+    alt?: string;
+  };
+
+const AvatarSection: FunctionComponent<AvatarSectionProps> = (props) => {
+  const profilePicture = '/profile_picture.jpeg';
+
+  const {
+    alt = 'Profile Picture of Walber Zaldivar',
+    src = profilePicture,
+    priority,
+    fill,
+    sectionId = 'foo',
+    ...extra
+  } = props;
+
   return (
     <div className="height-full section-avatar">
       <div className="avatar-frame">
@@ -10,13 +36,18 @@ export default function AvatarSection() {
           priority
           className="avatar"
           fill
-          alt="Profile Picture"
-          src={profileImage}
-        ></Image>
+          alt={alt}
+          src={src}
+          {...extra}
+        />
       </div>
+
       <div className="title">Walber Zaldivar</div>
       <div className="subtitle">Software Developer</div>
-      <SocialMediaBar />
+
+      <MySocialMediaBar />
     </div>
   );
-}
+};
+
+export default AvatarSection;
