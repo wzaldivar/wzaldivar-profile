@@ -1,13 +1,7 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 
-import { IconType } from "react-icons";
-import { FaChevronDown as DownArrowIcon } from "react-icons/fa";
+import { IconType } from 'react-icons';
+import { FaChevronDown as DownArrowIcon } from 'react-icons/fa';
 
 interface ScrollButtonProps {
   sectionId: string;
@@ -28,7 +22,7 @@ const ScrollButton: FunctionComponent<ScrollButtonProps> = (props) => {
 
   const handleScrollToSection = () => {
     if (nextSectionRef.current) {
-      nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      nextSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -45,10 +39,10 @@ const ScrollButton: FunctionComponent<ScrollButtonProps> = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   });
 
@@ -57,15 +51,15 @@ const ScrollButton: FunctionComponent<ScrollButtonProps> = (props) => {
   };
 
   useEffect(() => {
-    const iconContainer = document.querySelector(".icon-container.fade-out");
+    const iconContainer = document.querySelector('.icon-container.fade-out');
     iconContainer?.addEventListener(
-      "animationend",
+      'animationend',
       handleFadeOutEnd as EventListener,
     );
 
     return () => {
       iconContainer?.removeEventListener(
-        "animationend",
+        'animationend',
         handleFadeOutEnd as EventListener,
       );
     };
@@ -73,14 +67,14 @@ const ScrollButton: FunctionComponent<ScrollButtonProps> = (props) => {
 
   return (
     showButton && (
-      <div
-        className={`icon-container ${fadeIn ? "fade-in" : "fade-out"}`}
+      <button
+        className={`icon-container ${fadeIn ? 'fade-in' : 'fade-out'}`}
         onClick={handleScrollToSection}
       >
         <div className="icon-bouncer">
           <Icon />
         </div>
-      </div>
+      </button>
     )
   );
 };
