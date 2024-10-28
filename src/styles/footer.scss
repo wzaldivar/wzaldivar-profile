@@ -1,7 +1,7 @@
-@import "common";
-@import "avatar";
+@use "common";
+@use "avatar";
 
-$footer-background-color: $avatar-background-color;
+$footer-background-color: avatar.$avatar-background-color;
 
 .section-footer {
   height: 30vh;
@@ -18,5 +18,5 @@ $footer-background-color: $avatar-background-color;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: $subtitle-color;
+  color: common.$subtitle-color;
 }
