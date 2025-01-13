@@ -47,7 +47,7 @@ const useCurrentYear = () => {
   const [currentYear, setCurrentYear] = useState<number>(getCurrentYear());
 
   const timerInterval = useRef<number>(getTimerInterval());
-  const timer = useRef<NodeJS.Timeout>();
+  const timer = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
     const clearTimer = () => {
