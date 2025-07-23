@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 
 import { IconType } from 'react-icons';
 import { FaChevronDown as DownArrowIcon } from 'react-icons/fa';
@@ -73,14 +67,14 @@ const ScrollButton: FunctionComponent<ScrollButtonProps> = (props) => {
 
   return (
     showButton && (
-      <div
+      <button
         className={`icon-container ${fadeIn ? 'fade-in' : 'fade-out'}`}
         onClick={handleScrollToSection}
       >
         <div className="icon-bouncer">
           <Icon />
         </div>
-      </div>
+      </button>
     )
   );
 };

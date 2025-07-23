@@ -9,16 +9,13 @@ interface CopyrightLabelProps {
 
 const OwnershipLabel: FunctionComponent<CopyrightLabelProps> = ({
   owner,
-  year,
+  year = true,
 }) => {
   const currentYear = useCurrentYear();
 
-  const outputYear =
-    year == undefined || typeof year === 'number'
-      ? (year ?? currentYear)
-      : year
-        ? currentYear
-        : undefined;
+  const selectYear = () => (year ? currentYear : undefined);
+
+  const outputYear = typeof year === 'number' ? year : selectYear();
 
   const copyrightLabel = `${owner ?? ''}${owner && outputYear ? ' - ' : ''}${outputYear ?? ''}`;
 

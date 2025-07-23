@@ -1,4 +1,8 @@
-@import "avatar", "social-media", "bounce-icon", "footer", "common";
+@use "avatar";
+@use "social-media";
+@use "bounce-icon";
+@use "footer";
+@use "common";
 
 body {
   margin: 0;
